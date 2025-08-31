@@ -1,4 +1,4 @@
-Here’s a **fresh `README.md`** you can drop straight into your GitHub repo (`harshalkbison`). It’s structured so visitors understand the purpose, how to use it, and how to contribute:
+Here’s a **fresh `README.md`** you can drop straight into your GitHub repo (`gaur-migration-demo`). It’s structured so visitors understand the purpose, how to use it, and how to contribute:
 
 ---
 
@@ -60,7 +60,7 @@ README.md          -> This file
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/harshalkadam777/harshalkbison.git
+git clone https://github.com/harshalkadam777/gaur-migration-demo.git
 cd harshalkbison
 ```
 
@@ -82,7 +82,7 @@ streamlit run app/streamlit_app.py
 
 ## 🌐 Live Access
 
-* **GitHub Repo:** [harshalkadam777/harshalkbison](https://github.com/harshalkadam777/harshalkbison)
+* **GitHub Repo:** [harshalkadam777/gaur-migration-demo](https://github.com/harshalkadam777/gaur-migration-demoharshalkbison)
 * **Streamlit Dashboard:** *(to be added after deployment)*
 * **GitHub Pages (Maps):** *(if enabled, will host HTML maps here)*
 
