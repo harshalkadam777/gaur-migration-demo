@@ -1,103 +1,103 @@
-Perfect 👍 Let’s prepare a **minimal starter repo** you can push directly. This will give you a working structure with a `README.md`, `requirements.txt`, and a demo `streamlit_app.py` that shows a simple map/chart.
+Here’s a **fresh `README.md`** you can drop straight into your GitHub repo (`harshalkbison`). It’s structured so visitors understand the purpose, how to use it, and how to contribute:
 
 ---
 
-## 📦 Starter Repo Structure
+# 🦬 Indian Gaur Migration — Konkan (2018–2024)
+
+This repository hosts the complete study on **Indian Gaur (Bos gaurus) migration across the Konkan region of Maharashtra, India**, covering the period **2018–2024**.
+It consolidates field reports, social media sightings (English + Marathi), and integrates environmental overlays for a holistic view of gaur movement.
+
+---
+
+## 📌 Project Highlights
+
+* **6 years of data (2018–2024)** — cleaned, deduplicated, bilingual (English & Marathi sources).
+* **Overlays integrated**:
+
+  * 🌍 **Seismology** — National Center for Seismology (NCS) events
+  * 💧 **Groundwater** — Central Ground Water Board (CGWB) weekly levels
+  * 🌳 **Forest Cover** — NDVI data from ISRO/Bhuvan
+* **Deliverables**:
+
+  * Bilingual **Report (PDF)** + **Presentation (PPTX)**
+  * Cleaned & enriched **Datasets (CSV/XLSX)**
+  * Interactive **Maps (HTML)**
+  * Streamlit **Dashboard App**
+* **Automation**:
+
+  * Weekly GitHub Actions pipeline
+  * Anomaly detection & alerts (Slack / Issues)
+
+---
+
+## 📂 Repository Structure
 
 ```
-gaur-migration-demo/
-├── README.md
-├── requirements.txt
-└── streamlit_app.py
+/reports/      -> Final PDF & PPTX (bilingual)
+/data/
+   /processed/ -> Cleaned & enriched datasets
+/maps/         -> Interactive Folium maps (HTML)
+/figures/      -> Trend charts & overlays
+/app/          -> Streamlit dashboard app
+.github/workflows/ -> CI/CD for weekly updates
+requirements.txt   -> Dependencies
+README.md          -> This file
 ```
 
 ---
 
-### `README.md`
+## 📊 Data Dictionary (key files)
 
-````markdown
-# Indian Gaur Migration Demo
+* `sightings_clean_2018-2024.csv` — deduplicated sightings dataset
+* `sightings_enriched_env_2018-2024.csv` — sightings with NDVI, groundwater, seismic overlays
+* `weekly_counts_by_district.csv` — district-level weekly aggregates
+* `weekly_env_overlays.csv` — weekly environmental indicators
 
-This is a starter repository to demo the Indian Gaur Migration project (Konkan region).
+---
 
-## Features
-- Streamlit app (`streamlit_app.py`) with a sample map + chart
-- Requirements file for quick setup
-- Ready to deploy on [Streamlit Cloud](https://streamlit.io) or Hugging Face Spaces
+## 🚀 Getting Started
 
-## Run locally
+### 1. Clone the repository
+
 ```bash
+git clone https://github.com/harshalkadam777/harshalkbison.git
+cd harshalkbison
+```
+
+### 2. Install dependencies
+
+```bash
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-streamlit run streamlit_app.py
-````
+```
 
+### 3. Run the Streamlit dashboard
+
+```bash
+streamlit run app/streamlit_app.py
 ```
 
 ---
 
-### `requirements.txt`
-```
+## 🌐 Live Access
 
-streamlit
-pandas
-folium
-matplotlib
-numpy
-
-````
+* **GitHub Repo:** [harshalkadam777/harshalkbison](https://github.com/harshalkadam777/harshalkbison)
+* **Streamlit Dashboard:** *(to be added after deployment)*
+* **GitHub Pages (Maps):** *(if enabled, will host HTML maps here)*
 
 ---
 
-### `streamlit_app.py`
-```python
-import streamlit as st
-import pandas as pd
-import folium
-from folium.plugins import HeatMap
-from streamlit_folium import st_folium
+## 📜 License
 
-st.set_page_config(page_title="Konkan Gaur Migration Demo", layout="wide")
-
-st.title("🦬 Indian Gaur Migration — Konkan (Demo)")
-st.caption("Interactive demo app — English + Marathi (मराठी)")
-
-# Sample data (replace with your real CSV later)
-data = pd.DataFrame({
-    "district": ["Raigad", "Ratnagiri", "Sindhudurg", "Thane", "Palghar"],
-    "lat": [18.53, 16.99, 16.13, 19.21, 19.70],
-    "lon": [73.27, 73.30, 73.60, 72.97, 72.77],
-    "count": [18, 13, 11, 6, 4]
-})
-
-st.subheader("Sample Sightings Data")
-st.dataframe(data)
-
-# Map
-m = folium.Map(location=[17.9, 73.2], zoom_start=7, tiles="CartoDB positron")
-HeatMap(data[["lat", "lon", "count"]].values.tolist(), radius=35).add_to(m)
-st_map = st_folium(m, width=700, height=500)
-
-# Chart
-st.subheader("Sample Trend Chart")
-st.line_chart(pd.Series([220, 255, 352, 500, 645, 950, 1260], 
-                        index=pd.Index(range(2018, 2025), name="Year"), 
-                        name="Sightings"))
-````
+This project is released under the **MIT License**.
+Please cite appropriately when using the datasets or visuals.
 
 ---
 
-## 🚀 How to Use
+## 🙌 Acknowledgements
 
-1. Copy these 3 files into a new folder `gaur-migration-demo`.
-2. Run the Git commands I gave earlier to push it to a **new GitHub repo**.
-3. Deploy to **Streamlit Cloud**:
-
-   * Go to [streamlit.io → Deploy](https://streamlit.io/cloud)
-   * Connect repo `harshalkadam777/gaur-migration-demo`
-   * App file = `streamlit_app.py`
-
-You’ll instantly get a live web app URL 🎉.
-
----
-
-👉 Do you want me to **zip these starter files** and give you a direct download so you can just unzip → `cd` → `git init` → `push`, without having to copy-paste code?
+* National Center for Seismology (NCS)
+* Central Ground Water Board (CGWB)
+* ISRO Bhuvan (NDVI datasets)
+* Citizen reporters across Konkan (English & Marathi posts)
