@@ -1,0 +1,52 @@
+name: Weekly Data Update
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"   # every Monday 03:00 UTC
+  workflow_dispatch:       # allow manual run
+
+permissions:
+  contents: write          # needed to push changes back
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+          # Install any extra libs required only for the pipeline here:
+          pip install requests pyyaml
+
+      - name: Run weekly pipeline
+        env:
+          # Add any secrets you use for fetching data (optional):
+          # CGWB_CSV_URL: ${{ secrets.CGWB_CSV_URL }}
+          # SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          PYTHONUNBUFFERED: "1"
+        run: |
+          python scripts/update_data.py
+
+      - name: Commit changes (if any)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "chore: weekly data refresh (CI)"
+            git push
+          else
+            echo "No changes to commit."
+          fi
