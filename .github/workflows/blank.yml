@@ -34,3 +34,16 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          - name: Commit weekly update
+  run: |
+    git config --global user.name "github-actions[bot]"
+    git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+    if [ -n "$(git status --porcelain)" ]; then
+      git add -A
+      git commit -m "chore: weekly data update"
+      git pull --rebase origin main
+      git push origin HEAD:main
+    else
+      echo "No new data generated."
+    fi
