@@ -1,0 +1,34 @@
+name: Gaur sighting / गवा दर्शन
+description: Submit public evidence for review; reports are not automatically verified.
+title: "[Sighting] "
+body:
+  - type: markdown
+    attributes:
+      value: "This report will be public. Use a village or broad locality, not exact animal coordinates. Do not include phone numbers or private personal information."
+  - type: input
+    id: observed_on
+    attributes:
+      label: Observation date / दर्शनाची तारीख
+      description: Actual sighting date in YYYY-MM-DD; explain uncertainty below.
+    validations:
+      required: true
+  - type: input
+    id: locality
+    attributes:
+      label: District and village / जिल्हा व गाव
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Public evidence URL / पुराव्याचा दुवा
+      description: Link to the original observation, public report or uploaded evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details / तपशील
+      description: Number of animals if known, behaviour, source and uncertainty. Mention if this might duplicate an existing report.
+    validations:
+      required: true

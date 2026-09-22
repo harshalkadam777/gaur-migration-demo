@@ -1,6 +1,2 @@
-streamlit
-pandas
-folium
-matplotlib
-numpy
-streamlit-folium
+# Optional legacy Streamlit viewer only. Collection, Pages build and tests use Python's standard library.
+streamlit>=1.40,<2

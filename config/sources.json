@@ -1,0 +1,8 @@
+{
+  "inaturalist": {
+    "enabled": true,
+    "start_date": "2020-09-17",
+    "max_records": 5000,
+    "bounds": {"swlat": 15.5, "swlng": 72.5, "nelat": 20.5, "nelng": 74.6}
+  }
+}
