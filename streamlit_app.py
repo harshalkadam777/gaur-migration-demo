@@ -1,32 +1,21 @@
+"""Optional compatibility viewer; the primary dashboard is served by GitHub Pages."""
+import sys
+from pathlib import Path
 import streamlit as st
-import pandas as pd
-import folium
-from folium.plugins import HeatMap
-from streamlit_folium import st_folium
-
-st.set_page_config(page_title="Konkan Gaur Migration Demo", layout="wide")
-
-st.title("🦬 Indian Gaur Migration — Konkan (Demo)")
-st.caption("Interactive demo app — English + Marathi (मराठी)")
-
-# Sample data (replace with your real CSV later)
-data = pd.DataFrame({
-    "district": ["Raigad", "Ratnagiri", "Sindhudurg", "Thane", "Palghar"],
-    "lat": [18.53, 16.99, 16.13, 19.21, 19.70],
-    "lon": [73.27, 73.30, 73.60, 72.97, 72.77],
-    "count": [18, 13, 11, 6, 4]
-})
-
-st.subheader("Sample Sightings Data")
-st.dataframe(data)
-
-# Map
-m = folium.Map(location=[17.9, 73.2], zoom_start=7, tiles="CartoDB positron")
-HeatMap(data[["lat", "lon", "count"]].values.tolist(), radius=35).add_to(m)
-st_map = st_folium(m, width=700, height=500)
-
-# Chart
-st.subheader("Sample Trend Chart")
-st.line_chart(pd.Series([220, 255, 352, 500, 645, 950, 1260], 
-                        index=pd.Index(range(2018, 2025), name="Year"), 
-                        name="Sightings"))
+sys.path.insert(0,str(Path(__file__).resolve().parent/'src'))
+from observatory import build
+st.set_page_config(page_title='Konkan Gaur Observatory',layout='wide')
+st.title('Konkan Gaur Observatory / कोकण गवा निरीक्षण')
+st.caption('Verified reported sightings; not proof of migration or population estimates.')
+try:
+    data=build()
+except ValueError as exc:
+    st.error('Review data failed validation: '+str(exc));st.stop()
+st.write('Collection status:',data['status']['state'])
+st.write('Last successful check:',data['status']['last_success_at'] or 'Never')
+st.metric('Verified events',len(data['events']))
+if data['events']:
+    st.dataframe(data['events'])
+else:
+    st.info('No verified sightings yet. Review source evidence before publishing records.')
+st.dataframe(data['weekly'])

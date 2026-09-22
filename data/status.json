@@ -1,0 +1,15 @@
+{
+  "state": "ok",
+  "attempted_at": "2026-09-17T16:09:26.679618+00:00",
+  "sources": [
+    {
+      "source": "inaturalist",
+      "state": "ok",
+      "fetched": 56,
+      "new": 56,
+      "checked_at": "2026-09-17T16:09:26.679612+00:00"
+    }
+  ],
+  "last_success_at": "2026-09-17T16:09:26.679619+00:00",
+  "candidate_count": 56
+}
