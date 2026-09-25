@@ -172,6 +172,7 @@ def build(root=ROOT):
     public_status['sources'] = [{k: s.get(k) for k in ['source', 'state', 'new', 'fetched']} for s in status.get('sources', [])]
     payload = {'built_at': now(), 'status': public_status, 'events': events, 'weekly': weekly(events),
                'annual': [{'year': year, 'verified_events': sum(e['observed_on'].startswith(str(year)) for e in events)} for year in range(date.today().year - 5, date.today().year + 1)],
+               'candidate_records': [{k: row.get(k) for k in ['id', 'observed_on', 'url', 'source', 'source_quality']} for row in read(root / 'data/candidates.json', [])],
                'interpretation': 'Verified reported sightings; not population counts or proven migration. Coverage is unknown.'}
     write(out / 'data.json', payload)
     (out / '.nojekyll').touch()

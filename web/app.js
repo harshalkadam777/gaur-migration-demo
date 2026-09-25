@@ -35,6 +35,21 @@ fetch('data.json', {cache:'no-store'}).then(r => {if (!r.ok) throw new Error('Da
   data.weekly.forEach((w,i)=>{const col=document.createElement('div');col.className='column';col.title=`Week ${w.week}: ${w.verified_events} verified events; coverage unknown${w.partial ? '; incomplete week' : ''}`;const count=document.createElement('div');count.className='count';count.textContent=w.verified_events || '';const bar=document.createElement('div');bar.className='bar';bar.style.height=`${w.verified_events/max*140}px`;const label=document.createElement('span');label.textContent=i%5===0?w.week.slice(5):'';col.append(count,bar,label);$('chart').append(col);});
   $('built').textContent = `Published dataset built ${new Date(data.built_at).toLocaleString()}`;
   for(const item of data.annual){const card=document.createElement('article');const count=document.createElement('strong');count.textContent=item.verified_events;const year=document.createElement('span');year.textContent=item.year;card.append(count,year);$('annual').append(card);}
+  const candidates = data.candidate_records || [];
+  const years = {};
+  for (const item of [...candidates].sort((a,b)=>(a.observed_on || '').localeCompare(b.observed_on || ''))) {
+    const year=(item.observed_on || 'Unknown').slice(0,4); years[year]=(years[year] || 0)+1;
+    const tr=document.createElement('tr');
+    for (const value of [item.observed_on || 'Unknown', item.id, 'Awaiting review']) {const td=document.createElement('td');td.textContent=value;tr.append(td);}
+    const td=document.createElement('td');const link=document.createElement('a');
+    if (/^https?:\/\//i.test(item.url || '')) {link.href=item.url;link.textContent=item.source || 'Evidence';link.target='_blank';link.rel='noopener noreferrer';td.append(link);}
+    tr.append(td);$('candidateRecords').append(tr);
+  }
+  $('candidateYears').textContent=Object.entries(years).sort().map(([year,count])=>`${year}: ${count} candidate records`).join(' · ');
+  if (!data.events.length) {
+    $('chart').replaceChildren();$('chart').textContent='No verified historical series is available yet. See the preserved candidate records below.';
+    $('annual').replaceChildren();$('annual').textContent='Historical source data still requires review; annual totals are not established.';
+  }
   renderRows();
 }).catch(error=>{$('status').textContent='Dashboard data could not be loaded. Please retry later.';document.querySelector('.health').classList.add('error');});
 $('district').addEventListener('change',renderRows);
