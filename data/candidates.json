@@ -684,6 +684,18 @@
     "first_seen": "2026-09-28T09:44:28.240879+00:00"
   },
   {
+    "id": "inat:404910300",
+    "source": "iNaturalist",
+    "url": "https://www.inaturalist.org/observations/404910300",
+    "observed_on": "2026-09-10",
+    "reported_at": "2026-10-01T10:05:56+05:30",
+    "source_quality": "research",
+    "source_license": "cc-by-nc",
+    "location_obscured": true,
+    "species": "Bos gaurus",
+    "first_seen": "2026-10-05T10:23:47.694156+00:00"
+  },
+  {
     "id": "inat:92501001",
     "source": "iNaturalist",
     "url": "https://www.inaturalist.org/observations/92501001",
