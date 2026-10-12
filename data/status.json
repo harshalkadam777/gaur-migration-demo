@@ -1,15 +1,15 @@
 {
   "state": "ok",
-  "attempted_at": "2026-10-05T10:23:47.694168+00:00",
+  "attempted_at": "2026-10-12T10:46:26.137551+00:00",
   "sources": [
     {
       "source": "inaturalist",
       "state": "ok",
-      "fetched": 59,
-      "new": 1,
-      "checked_at": "2026-10-05T10:23:47.694164+00:00"
+      "fetched": 62,
+      "new": 3,
+      "checked_at": "2026-10-12T10:46:26.137548+00:00"
     }
   ],
-  "last_success_at": "2026-10-05T10:23:47.694169+00:00",
-  "candidate_count": 59
+  "last_success_at": "2026-10-12T10:46:26.137552+00:00",
+  "candidate_count": 62
 }
