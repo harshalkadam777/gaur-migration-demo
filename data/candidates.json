@@ -732,6 +732,42 @@
     "first_seen": "2026-10-12T10:46:26.137542+00:00"
   },
   {
+    "id": "inat:408324161",
+    "source": "iNaturalist",
+    "url": "https://www.inaturalist.org/observations/408324161",
+    "observed_on": "2022-03-22",
+    "reported_at": "2026-10-14T23:54:36+05:30",
+    "source_quality": "casual",
+    "source_license": null,
+    "location_obscured": true,
+    "species": "Bos gaurus",
+    "first_seen": "2026-10-19T08:50:01.931718+00:00"
+  },
+  {
+    "id": "inat:408324162",
+    "source": "iNaturalist",
+    "url": "https://www.inaturalist.org/observations/408324162",
+    "observed_on": "2022-03-22",
+    "reported_at": "2026-10-14T23:54:36+05:30",
+    "source_quality": "casual",
+    "source_license": null,
+    "location_obscured": true,
+    "species": "Bos gaurus",
+    "first_seen": "2026-10-19T08:50:01.931720+00:00"
+  },
+  {
+    "id": "inat:408324187",
+    "source": "iNaturalist",
+    "url": "https://www.inaturalist.org/observations/408324187",
+    "observed_on": "2022-03-22",
+    "reported_at": "2026-10-14T23:54:41+05:30",
+    "source_quality": "casual",
+    "source_license": null,
+    "location_obscured": true,
+    "species": "Bos gaurus",
+    "first_seen": "2026-10-19T08:50:01.931721+00:00"
+  },
+  {
     "id": "inat:92501001",
     "source": "iNaturalist",
     "url": "https://www.inaturalist.org/observations/92501001",
